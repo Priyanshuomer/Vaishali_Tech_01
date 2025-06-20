@@ -17,25 +17,25 @@ export const createCategory = async (req, res) => {
 
     let image;
 
-    if (req?.file) {
-      try {
-        const cloudinaryUrl = await uploadToCloudinary(req.file.path);
-        image = cloudinaryUrl.secure_url;
-      } catch (err) {
-        console.log(err);
-      }
-    }
+    // if (req?.file) {
+    //   try {
+    //     const cloudinaryUrl = await uploadToCloudinary(req.file.path);
+    //     image = cloudinaryUrl.secure_url;
+    //   } catch (err) {
+    //     console.log(err);
+    //   }
+    // }
 
     // Set default value for totalCoupons if not provided
     totalCoupons = totalCoupons || 0;
 
     // Validation
-    if (!name || !image) {
-      return res.status(400).json({
-        success: false,
-        message: "Please provide name and image",
-      });
-    }
+    // if (!name || !image) {
+    //   return res.status(400).json({
+    //     success: false,
+    //     message: "Please provide name and image",
+    //   });
+    // }
 
     // Check if category already exists
     const categoryExists = await Category.findOne({ name });
@@ -49,7 +49,7 @@ export const createCategory = async (req, res) => {
     // Create category
     const category = await Category.create({
       name,
-      image,
+      // image,
       totalCoupons,
     });
 

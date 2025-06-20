@@ -13,7 +13,7 @@ import { upload } from '../config/cloudinary.js';
 const router = express.Router();
 
 // Create a new category (Private/Admin)
-router.post('/',authenticate,upload.single('image'), createCategory); // POST /api/categories
+router.post('/',upload.single('image'), createCategory); // POST /api/categories
 
 // Get all categories (Public)
 router.get('/',getCategories); // GET /api/categories
